@@ -1,5 +1,6 @@
 {
     "definitions": {
+        "taskName": "{{managed.caseNameUnique}}",
         "include_onepod": false,
         "kbps_throughput_tcp": 10,
         "kbps_throughput_tail": 10,

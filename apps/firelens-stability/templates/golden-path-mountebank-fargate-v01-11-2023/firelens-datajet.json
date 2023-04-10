@@ -22,14 +22,13 @@
       "datajet": {
         "name": "forward",
         "config": {
-          "host": "{{{endpoint_flb}}}",
+          "host": "{{endpoint_flb}}",
           "port": 6270,
-          "tagPrefix": "Application-firelens-"
+          "tagPrefix": "Application-firelens-{{definitions.caseNameUnique}}"
         }
       },
       "stage": {
-        "batchRate": {{definitions.kbps_throughput_forward}},
-        "maxBatches": 100000000000
+        "batchRate": {{definitions.kbps_throughput_forward}}
       }
     },
     {
@@ -50,8 +49,7 @@
         }
       },
       "stage": {
-        "batchRate": {{definitions.kbps_throughput_tail}},
-        "maxBatches": 100000000000
+        "batchRate": {{definitions.kbps_throughput_tail}}
       }
     },
     {
@@ -73,8 +71,7 @@
         }
       },
       "stage": {
-        "batchRate": {{definitions.kbps_throughput_tcp}},
-        "maxBatches": 100000000000
+        "batchRate": {{definitions.kbps_throughput_tcp}}
       }
     },
     {
@@ -90,14 +87,13 @@
       "datajet": {
         "name": "tcp",
         "config": {
-          "host": "{{{endpoint_flb}}}",
+          "host": "{{endpoint_flb}}",
           "port": 5171,
           "addNewline": true
         }
       },
       "stage": {
-        "batchRate": {{definitions.kbps_throughput_tcp}},
-        "maxBatches": 100000000000
+        "batchRate": {{definitions.kbps_throughput_tcp}}
       }
     }
   ]

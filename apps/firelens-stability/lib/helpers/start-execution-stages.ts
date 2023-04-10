@@ -30,7 +30,8 @@ export async function recoverTestCaseSeeds(executionContext: IExecutionContext):
                                            Promise<ITestCaseSeed[]> {
     const executionConfigSeed = await getStringFromFile(PathProvider.executionJson());
     const collectionConfigSeed = await getStringFromFile(Constants.paths.collectionConfig);
-    const collections = await getSubFolders(Constants.paths.collections);
+    const collectionsAll = await getSubFolders(Constants.paths.collections);
+    const collections = collectionsAll.filter(c => executionContext.execution.executeCollections.includes(path.basename(c)));
 
     /* Basic managed variables */
     const managedVariablesDefaults = {
@@ -41,6 +42,7 @@ export async function recoverTestCaseSeeds(executionContext: IExecutionContext):
     /* Expand each test collection */
     const testCaseSeeds =
     await Promise.all(collections.map(
+        
         async (c) => {
             const suites = await getSubFolders(c);
             const suiteConfigSeed = await getStringFromFile(Path.join(c, Constants.fileNames.suiteConfig));
@@ -187,5 +189,7 @@ export async function recordTestCases(
         executionContext,
         executionRecordArchives
     }
-    return await sendJSONToFile(recordsComplete, Path.join(recordsLocalPath, `${executionContext.executionId}-record.json`));
+    const recordsFile = Path.join(recordsLocalPath, `${executionContext.executionId}-record.json`);
+    console.log(`Records written to file: ${recordsFile}`)
+    return await sendJSONToFile(recordsComplete, recordsFile);
 }

@@ -1,6 +1,7 @@
 {
     "definitions": {
-        "testId": "{{managed.suiteName}}-{{managed.caseName}}"
+        "testId": "{{managed.suiteName}}-{{managed.caseName}}",
+        "taskName": "{{managed.executionName}}-{{managed.suiteName}}-{{managed.caseName}}"
     },
     "config": {
         "cluster": "{{managed.executionName}}-{{managed.suiteName}}-{{managed.executionId}}",
