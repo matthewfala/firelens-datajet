@@ -132,19 +132,20 @@ export async function hydrateTestCaseSeed(testCaseSeed: ITestCaseSeed):
 
     const layer2Config = cascadeConfigurationStringAsExtension(testCaseSeed.collectionConfigSeed, baseConfig);
     const layer3Config = cascadeConfigurationStringAsExtension(testCaseSeed.suiteConfigSeed, layer2Config);
-    const layer4Config = cascadeConfigurationStringAsExtension(testCaseSeed.caseSeed, layer3Config);
+    const layer4Config = cascadeConfigurationStringAsExtension(testCaseSeed.caseConfigSeed, layer3Config);
+    const layer5Config = cascadeConfigurationStringAsExtension(testCaseSeed.caseSeed, layer4Config);
 
     /* Get template */
-    const templateName = layer4Config.config.template;
+    const templateName = layer5Config.config.template;
     if (!templateName) {
-        validateTestConfig(layer4Config);
+        validateTestConfig(layer5Config);
     }
     const templateConfigPath = Path.join(Constants.paths.templates, templateName, Constants.fileNames.templateDefaultConfig);
     const templateConfig = await getStringFromFile(templateConfigPath);
-    const layer5Config = cascadeConfigurationStringAsDefault(templateConfig, layer4Config);
+    const layer6Config = cascadeConfigurationStringAsDefault(templateConfig, layer5Config);
 
     /* Final layer of configuration from execution seed. These function as overrides. */
-    const config = cascadeConfigurationStringAsExtension(testCaseSeed.executionConfigSeed, layer5Config);
+    const config = cascadeConfigurationStringAsExtension(testCaseSeed.executionConfigSeed, layer6Config);
 
     validateTestConfig(config);
     

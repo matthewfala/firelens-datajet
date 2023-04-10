@@ -112,7 +112,7 @@
           "options": {
             "Name": "cloudwatch_logs",
             "region": "{{config.region}}",
-            "log_group_name": "/aws/ecs/containerinsights/{{managed.caseNameUnique}}",
+            "log_group_name": "/aws/ecs/containerinsights/dummy-app",
             "auto_create_group": "true",
             "log_stream_name": "stdout-stderr-",
             "retry_limit": "2"

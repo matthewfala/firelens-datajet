@@ -34,3 +34,7 @@ export const defaults = {
         taskCount: 1,
     }
 }
+
+export const ecsConfig = {
+    maxRetryRounds: 100,
+}
