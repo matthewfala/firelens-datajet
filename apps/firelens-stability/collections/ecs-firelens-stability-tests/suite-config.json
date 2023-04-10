@@ -1,7 +1,8 @@
 {
     "definitions": {
         "testId": "{{managed.suiteName}}-{{managed.caseName}}",
-        "taskName": "{{managed.executionName}}-{{managed.suiteName}}-{{managed.caseName}}"
+        "taskName": "{{managed.executionName}}-{{managed.suiteName}}-{{managed.caseName}}",
+        "segfault": false
     },
     "config": {
         "cluster": "{{managed.executionName}}-{{managed.suiteName}}-{{managed.executionId}}",

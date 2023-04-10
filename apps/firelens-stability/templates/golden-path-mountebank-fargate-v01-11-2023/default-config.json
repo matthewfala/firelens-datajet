@@ -12,6 +12,8 @@
         "HOSTNAME": "myhostname",
         "STAGE": "test",
         "LOG_REGION": "us-west-2",
-        "serviceName": "golden-onepod-low-throughput"
+        "serviceName": "golden-onepod-low-throughput",
+        "debugS3Bucket": "{{managed.s3OutputBucket}}",
+        "debugS3KeyPrefix": "{{managed.s3OutputExecutionPath}}/{{managed.caseNameUnique}}"
     }
 }

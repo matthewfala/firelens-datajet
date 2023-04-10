@@ -7,6 +7,6 @@
         "kbps_throughput_forward": 10
     },
     "config": {
-        "n_tasks": 1
+        "taskCount": 1
     }
 }
