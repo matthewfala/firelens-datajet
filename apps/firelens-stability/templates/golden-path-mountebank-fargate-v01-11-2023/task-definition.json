@@ -85,7 +85,7 @@
         "logConfiguration": {
             "logDriver": "awslogs",
             "options": {
-                "awslogs-group": "app-{{managed.caseNameUnique}}",
+                "awslogs-group": "app-{{managed.executionName}}",
                 "awslogs-region": "{{config.region}}",
                 "awslogs-create-group": "true",
                 "awslogs-stream-prefix": "datajet"
@@ -141,7 +141,7 @@
         "logConfiguration": {
           "logDriver": "awslogs",
             "options": {
-                "awslogs-group": "app-{{managed.caseNameUnique}}",
+                "awslogs-group": "app-{{managed.executionName}}",
                 "awslogs-region": "{{config.region}}",
                 "awslogs-create-group": "true",
                 "awslogs-stream-prefix": "mock"
